@@ -1,0 +1,48 @@
+create table student(rno int, name varchar(20), marks int);
+insert into student values(1,'abc',32);
+insert into student values(2,'yash', 45);
+insert into student values(3,'Sairam', 31);
+insert into student values(4,'sanskruti',38);
+insert into student values(5,'bhavana',39);
+insert into student values(1,'shruti',42);
+
+select * from student;
+
+begin 
+update student set marks=40 where marks between 35 and 39;
+if sql%notfound then
+dbms_output.put_line('no records were updated');
+else
+dbms_output.put_line('total records updated:'||sql%rowcount);
+end if;
+end;
+
+select * from student;
+
+
+
+create table newstudent(rno int, name varchar(20), marks int);
+insert into newstudent values(1,'abc',32);
+insert into newstudent values(2,'yash', 45);
+insert into newstudent values(6,'Sai', 31);
+insert into newstudent values(7,'sanski',38);
+
+declare
+cursor cur_s is select*from student;
+cursor cur_new (a int) is select*from
+newstudent where rollno=a;
+nrec newstudent%rowtype;
+begin
+for srec in cur_s
+loop
+open cur_new (srec.roll_no);
+fetch cur_new into nrec;
+if cur_new% notfound then
+insert into newstudent
+values(srec.roll_no,srec.name,srec.marks);
+end if;
+close cur_new;
+end loop;
+end;
+
+select*from newstudent;

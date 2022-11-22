@@ -1,0 +1,15 @@
+delimiter //
+create procedure proc260(in roll_no tinyint, in name varchar(30), in marks int)
+begin
+declare class varchar(30);
+if marks>=990 and marks<=1500 then set class="Distinction";
+elseif marks<=989 and marks>=900 then set class="First Class";
+elseif marks<=899 and marks>=825 then set class="Second Class";
+elseif marks<=824 and marks>=700 then set class="Pass";
+else set class="Fail";
+end if;
+insert into student values(name, marks);
+insert into result values(roll_no,name, class);
+end //
+
+call proc260(101,"Abc",1400)//

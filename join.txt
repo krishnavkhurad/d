@@ -1,0 +1,36 @@
+*select emp_no, emp_name, branchName from employeeMaster e inner join branchMaster b 
+	on e.branchID=b.branchID order by emp_no;
+
+*select emp_name, department, branchName from branchMaster b, employeeMaster e where
+	 b.branchID=e.branchID and department="Account";
+
+*select emp_name, phn_no, city from employeeMaster e inner join emp_addressDetails 
+	a on e.emp_no=a.empl_id inner join Contactdetails c on e.emp_no=c.empl_id;
+
+*select emp_name, email_id, phn_no from employeeMaster e inner join Contactdetails c
+	 on e.emp_no=c.empl_id;
+*select e1.emp_name, e2.emp_name as manager from employeeMaster e1, 
+	employeeMaster e2 where e1.managerID=e2.emp_no;
+
+*select emp_name, department, branchName from branchMaster b natural join employeeMaster e;
+
+*select emp_name, city from employeeMaster e , branchMaster b, emp_addressDetails a
+	 where branchName="Wadgaon" and e.branchID=b.branchID and a.emp_id=e.emp_no;
+
+*select emp_name, city, street from employeeMaster e, branchMaster b,
+	 emp_addressDetails a where branchName="Wadgaon" and salary>10000 and e.branchID=b.branchID and e.emp_no=a.empl_id;
+
+*select emp_name from emp_master where salary>ALL (select salary from emp_master e,
+	 branchMaster b where e.branchID=b.branchID and branchName="Wadgaon");
+
+*create view empv as select emp_name from emp_master;
+
+*select branchName from emp_master e, branchMaster b where e.branchID=b.branchId 
+	 and salary>100000;
+
+*select emp_name from emp_master e, branchMaster b where branchName!="Wadgaon" and
+	 e.branchId=b.branchID;
+
+
+
+

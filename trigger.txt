@@ -1,0 +1,37 @@
+FOR INSERT
+
+delimiter //
+mysql> create trigger insert11 after insert on borrower
+    -> for each row
+    -> begin 
+    -> insert into audit values(new.rollno, new.name, new.Author,new.Name_of_Book,
+    -> new.DOI,new.status, current_timestamp);
+    -> end;
+    -> //
+
+FOR UPDATE
+	delimiter // 
+	->create trigger update60 after update on borrower 
+	->for each row
+	->insert into audit values(new.rollno, new.name, new.Author,new.Name_of_Book,
+	->new.DOI,new.status, current_timestamp);
+	->end;
+	->//
+
+update borrower set Author="A7" and status="Available" where Name_of_Book="IOT"//
+
+
+FOR DELETE:
+delimiter // 
+mysql> create trigger delete60 after delete on borrower 
+    -> for each row
+    -> begin
+    -> insert into audit values(old.rollno, old.name, old.Author,old.Name_of_Book,
+    -> old.DOI,new.status, current_timestamp);
+    -> end;
+    -> //
+mysql> delete from borrower where rollno=104//
+
+
+
+

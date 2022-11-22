@@ -1,0 +1,16 @@
+*alter table Dept add primary key(dept_no);
+*alter table instructor add foreign key(dept_no) references Dept(dept_no);
+*alter table Dept add column budget int(10);
+*create unique index Sr on instructor(mobile_no);
+*create view instr_view as select inst_id, inst_name, dept_no, mobile_no from instructor;
+*drop view instr_view;
+*alter table Dept drop budget;
+*alter table course modify title varchar(50);
+*drop index Sr on instructor;
+*rename table course to newCourse;
+
+
+
+
+
+

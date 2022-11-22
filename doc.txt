@@ -1,0 +1,20 @@
+*select pt_name from Patient where age between 18 and 50;
+*select doc_name from Doctor where experience>20;
+*select pt_name from Patient, Treats where Treats.disease="Cancer" and Treats.pt_id=Patient.pt_id;
+*select pt_name,doc_name from Patient as p, Doctor as d, Treats as t where disease ="Cancer" and d.doc_id=t.doc_id and p.pt_id=t.pt_id;
+*select pt_name from Patient where pt_name like "A%";
+*delete from Patient where pt_id=10;
+*update Doctor set Qualification= "MD" where doc_name = "Vivek";
+*update Doctor set salary = salary + (5/100)*salary where Department="dental";
+*update Doctor set salary = salary + (10/100)*salary where Department="cardiology";
+*select Department, SUM(salary) from Doctor Group by Department;
+*select AVG(salary)from Doctor  where department="dental";
+*select Department, AVG(salary) from Doctor GROUP BY Department having AVG(salary)>50000;
+*select count(*) from Doctor;
+*select doc_name from Doctor as d, Treats as t where t.doc_id=d.doc_id;
+* select  Patient.city from Patient UNION select Doctor.city from Doctor;
+*select Department, AVG(salary) from Doctor GROUP BY Department
+
+
+
+
